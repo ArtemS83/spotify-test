@@ -13,15 +13,16 @@ import { fetchPlaylists } from 'redux/playlists/playlists-operations';
 const AsideBar = () => {
   const dispatch = useDispatch();
 
-  const playlists = useSelector(getPlaylists);
-  // const isLoading = useSelector(getIsLoadingSelector);
-
   useEffect(() => {
     dispatch(fetchPlaylists());
-  }, [dispatch]);
+  }, []);
+
+  const playlists = useSelector(getPlaylists);
+  const isLoading = useSelector(getIsLoadingSelector);
 
   return (
-    <div className={styles.AsideBar}>
+    <aside className={styles.AsideBar}>
+      <h1>AsideBar</h1>
       {playlists.length > 0 ? (
         <>
           <Playlists />
@@ -29,7 +30,7 @@ const AsideBar = () => {
       ) : (
         <Notification message="No Playlists" />
       )}
-    </div>
+    </aside>
   );
 };
 

@@ -9,7 +9,7 @@ const Playlists = () => {
   return (
     <ul className={styles.list}>
       {playlists.map(playlist => (
-        <PlaylistItem key={playlist.id} id={playlist.id} />
+        <PlaylistItem key={playlist.id} playlist={playlist} />
       ))}
     </ul>
   );

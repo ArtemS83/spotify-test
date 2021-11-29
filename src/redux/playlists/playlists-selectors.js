@@ -1,3 +1,3 @@
-export const getPlaylists = state => state.playlists.items;
-export const getIsLoadingSelector = state => state.playlists.loading;
-export const getErrorSelector = state => state.playlists.loading;
+export const getPlaylists = state => state.albums.items;
+export const getIsLoadingSelector = state => state.albums.loading;
+export const getErrorSelector = state => state.albums.loading;

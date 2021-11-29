@@ -14,8 +14,6 @@ const PlaylistPage = lazy(() =>
 );
 
 const App = () => {
-  console.log('HELLLLOOO App');
-
   const dispatch = useDispatch();
 
   return (
