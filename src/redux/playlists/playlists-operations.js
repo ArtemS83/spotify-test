@@ -1,20 +1,23 @@
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAccessToken } from 'redux/token/token-selectors';
 import {
   fetchPlaylistsRequest,
   fetchPlaylistsSuccess,
   fetchPlaylistsError,
 } from './playlists-actions';
 
-require('dotenv').config();
+axios.defaults.baseURL = 'https://api.spotify.com/v1';
+// axios.defaults.headers.common.Authorization = `Bearer ${process.env.REACT_APP_BEARER_TOKEN}`;
 
-axios.defaults.baseURL = 'https://api.spotify.com/v1'; // 'https://api.spotify.com/v1/me/playlists'
-// axios.defaults.headers.common.Authorization = `Bearer ${process.env.BEARER_TOKEN}`;
-axios.defaults.headers.common.Authorization = `Bearer BQDBIsMZi6eu43_H5KrNZ6j2IvDboG-EpV-C_rmpky-G5N9AfLSvnF685rK-BKbuPIpsLgyE8rS01SQvksTgBdsHGxnjhA4savjoDmghVmq_h7S63GE2p9S5bbymV-uI9QFzriOjI60GcItUPRn-D2aR-Lggv2wlbwS4UWQn0KpWcwMl`;
-
-export const fetchPlaylists = () => dispatch => {
+export const fetchPlaylists = token => dispatch => {
   dispatch(fetchPlaylistsRequest());
   axios
-    .get('/me/playlists?limit=8')
+    .get('/me/playlists?limit=8', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then(({ data }) => {
       console.log(
         '🚀 ~ file: playlists-operations.js ~ line 17 ~ .then ~ items',

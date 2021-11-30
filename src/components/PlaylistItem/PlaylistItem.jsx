@@ -7,6 +7,7 @@ import styles from './PlaylistItem.module.scss';
 const PlaylistItem = ({ playlist }) => {
   const { id, name, images } = playlist;
   const dispatch = useDispatch();
+  const ImageUrl = images[0].url;
 
   return (
     <>
@@ -16,7 +17,7 @@ const PlaylistItem = ({ playlist }) => {
         }}
       >
         <div className={styles.item}>
-          <img src={images[0].url} alt="name" width="60" height="60" url />
+          <img src={ImageUrl} alt={name} width="60" height="60" />
           <h2>{name}</h2>
         </div>
       </Link>
@@ -25,9 +26,7 @@ const PlaylistItem = ({ playlist }) => {
 };
 
 PlaylistItem.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  images: PropTypes.object.isRequired,
+  playlist: PropTypes.object.isRequired,
 };
 
 export default PlaylistItem;

@@ -10,26 +10,23 @@ import {
 } from 'redux/playlists/playlists-selectors';
 import { fetchPlaylists } from 'redux/playlists/playlists-operations';
 
+import { getAccessToken } from 'redux/token/token-selectors';
+
 const AsideBar = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchPlaylists());
-  }, []);
-
+  const accessToken = useSelector(getAccessToken);
   const playlists = useSelector(getPlaylists);
   const isLoading = useSelector(getIsLoadingSelector);
+
+  useEffect(() => {
+    dispatch(fetchPlaylists(accessToken));
+  }, []);
 
   return (
     <aside className={styles.AsideBar}>
       <h1>AsideBar</h1>
-      {playlists.length > 0 ? (
-        <>
-          <Playlists />
-        </>
-      ) : (
-        <Notification message="No Playlists" />
-      )}
+      <Playlists />
     </aside>
   );
 };
