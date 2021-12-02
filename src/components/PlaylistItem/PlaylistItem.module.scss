@@ -1,6 +1,26 @@
-.item {
-  display: flex;
-  img {
-    border-radius: 50%;
+.link {
+  margin-bottom: 20px;
+  width: 100%;
+
+  .item {
+    display: flex;
+    align-items: center;
+    transition: all 300ms ease-in-out;
+    img {
+      margin-right: 27px;
+      border-radius: 25%;
+    }
+    .title {
+      color: #a6aab4;
+    }
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+    }
+  }
+  .activeLink {
+    .title {
+      color: #e71f1f;
+    }
   }
 }

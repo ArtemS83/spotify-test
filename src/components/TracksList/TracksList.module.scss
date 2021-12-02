@@ -1,0 +1,31 @@
+.TracksListBox {
+  width: 100%;
+}
+.TracksList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  // height: 300px;
+  height: 45vh;
+  padding-top: 44px;
+  // background-size: cover;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  h1 {
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    color: #747474;
+  }
+  .TracksListText {
+    margin-left: 67px;
+    margin-bottom: 14px;
+  }
+}
+.list {
+  width: 100%;
+  margin-left: 67px;
+}

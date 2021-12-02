@@ -1,0 +1,27 @@
+.link {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 39px;
+  margin-right: 103px;
+  padding-left: 12px;
+  padding-right: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 70px;
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    rgba(165, 83, 91, 0.12) 0%,
+    rgba(30, 3, 107, 0.48) 100%
+  );
+  background-size: cover;
+  border-radius: 6px;
+  border-width: 1px;
+  img {
+    margin-right: 18px;
+    border-radius: 10px;
+  }
+  svg {
+    // margin-left: auto;
+  }
+}

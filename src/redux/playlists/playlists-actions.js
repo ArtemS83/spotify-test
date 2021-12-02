@@ -7,3 +7,5 @@ export const fetchPlaylistsSuccess = createAction(
   'playlists/fetchPlaylistSuccess',
 );
 export const fetchPlaylistsError = createAction('playlists/fetchPlaylistError');
+
+export const ErrorLoginAction = createAction('playlists/ErrorLoginAction');

@@ -3,6 +3,7 @@ import {
   fetchPlaylistsRequest,
   fetchPlaylistsSuccess,
   fetchPlaylistsError,
+  ErrorLoginAction,
 } from './playlists-actions';
 
 const initialState = [];
@@ -19,6 +20,7 @@ const loading = createReducer(false, {
 
 const error = createReducer(null, {
   [fetchPlaylistsError]: (_, { payload }) => payload,
+  [ErrorLoginAction]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
