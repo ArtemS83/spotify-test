@@ -12,7 +12,6 @@ const PlaylistItemHomePage = ({ playlist }) => {
 
   return (
     <>
-      {/* <li> */}
       <li className={styles.item}>
         <Link
           to={{

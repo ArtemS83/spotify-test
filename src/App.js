@@ -29,45 +29,38 @@ const TracksPage = lazy(() =>
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [accessToken, setAccessToken] = useState(''); // 'hjkl;'
-  const errorConnect = useSelector(getErrorSelector); // null
+  const [accessToken, setAccessToken] = useState('');
+  const errorConnect = useSelector(getErrorSelector);
+  const [accessTokenFromParams, setTokenFromParams] = useState(
+    getHashParams().access_token,
+  );
 
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (errorConnect && !accessToken) {
-  //     setIsLogin(false);
-  //     setAccessToken('');
-  //     dispatch(ErrorLoginAction(null));
-  //     return;
-  //   }
-  // }, [errorConnect]);
 
   useEffect(() => {
     const localSpotifyAccessToken = window.localStorage.getItem(
       'spotifyAccessToken',
     );
 
-    if (localSpotifyAccessToken && !errorConnect) {
-      //&& !accessToken TODO:
+    if (localSpotifyAccessToken && !errorConnect && !accessTokenFromParams) {
       setAccessToken(localSpotifyAccessToken);
       setIsLogin(true);
       dispatch(accessTokenAction(localSpotifyAccessToken));
     } else {
       getForSpotifyAccessToken();
     }
-  }, [accessToken, errorConnect]);
+  }, [accessToken, errorConnect, accessTokenFromParams]);
 
   const getForSpotifyAccessToken = () => {
-    const params = getHashParams();
-
-    const accessTokenFromParams = params.access_token;
+    // const params = getHashParams();
+    // const accessTokenFromParams = params.access_token;
     if (!accessTokenFromParams) {
       setIsLogin(false);
-      // setAccessToken('');
       return;
     }
     dispatch(accessTokenAction(accessTokenFromParams));
     setAccessToken(accessTokenFromParams);
+    setTokenFromParams(accessTokenFromParams);
     setIsLogin(true);
     window.localStorage.setItem('spotifyAccessToken', accessTokenFromParams);
   };
@@ -81,6 +74,7 @@ const App = () => {
             orientation="vertical"
             flexItem
             style={{
+              height: '100vh',
               marginLeft: '40px',
               borderColor: 'rgba(255, 255, 255, 0.18)',
             }}

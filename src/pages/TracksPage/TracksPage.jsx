@@ -20,15 +20,6 @@ const TracksPage = () => {
 
   // const { name, tracks, images } = album;
 
-  // const fetchTracks = async (url, token) => {
-  //   const { data } = await axios.get(url, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  //   return data.items;
-  // };
-
   useEffect(() => {
     if (album) {
       fetchTracks(album?.tracks.href, accessToken).then(data =>
