@@ -14,17 +14,21 @@ const PlaylistsHomePageMU = () => {
   return (
     <>
       <Container className={styles.list}>
-        <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 10 }}>
+        <Grid
+          container
+          spacing={4}
+          // columns={{ xs: 4, sm: 8, md: 10 }}
+          className={styles.parent}
+        >
           {playlists.map((playlist, i) => (
             <Grid
               item
               key={playlist.id}
-              xs={12}
-              sm={6}
-              // md={3}
-              md={i === 0 ? 4 : 2}
+              // xs={12}
+              // sm={6}
+              // md={i === 0 ? 4 : 2}
               className={styles.item}
-              style={{ position: i === 0 && 'relative' }}
+              style={{ gridArea: i === 0 && '1 / 1 / 3 / 3' }}
             >
               <Link
                 to={{
